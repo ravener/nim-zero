@@ -208,7 +208,6 @@ class Player:
     def show_hand(self):
         """Shows the player's hand in a simple list format."""
         return add(*map(lambda card: card.get_ascii(), self.cards))
-        # return str(list(map(lambda card: card.number, self.cards)))
     
     def play(self, number):
         for i in range(len(self.cards)):
@@ -243,9 +242,12 @@ def clear():
 
 game = Game()
 
-game.add_player("Player 1")
-game.add_player("Player 2")
-game.add_player("Player 3")
+players = int(input("How many players?: "))
+
+print("Starting game with {} players.".format(players))
+
+for i in range(players):
+    game.add_player("Player {}".format(i+1))
 
 rounds = 0
 while True:
